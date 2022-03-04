@@ -1,0 +1,39 @@
+Question : Given an array of integers arr, return true if and only if it is a valid mountain array.
+
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        boolean upward = true;
+        boolean isUp = true;
+        boolean isDown = true;
+        for(int i =0;i<arr.length-1;i++){
+            if(upward){
+                if(arr[i+1]>arr[i]){
+                    isUp = true;
+                }
+                else {
+                    upward = false;
+                }
+                if(arr[i]==arr[i+1]){
+                    return false;
+                }
+            }
+            else{
+                if(arr[i]>arr[i+1]){
+                    isDown = true;
+                }
+                else {
+                    isDown = false;
+                }
+                if(arr[i]==arr[i+1]){
+                    return false;
+                }
+            }
+        }
+        if(isUp&&(!upward)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
